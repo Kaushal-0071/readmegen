@@ -11,7 +11,7 @@ export default function Home() {
   const submit = () => {  
    
     
-    router.push(`/markdown/1`);
+    router.push(`/markdown`);
   };
   return (
     <>

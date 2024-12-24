@@ -48,10 +48,16 @@ const Markdown = () => {
       const result = await chatSession.sendMessage(data);
       return result;
     }
-    
+//useeffect for selection
+useEffect(() => {
+    document.addEventListener("selectionchange", () => { 
+      const selection = document.getSelection();
+      const text = selection.toString();
+      console.log(text);
+    } )
+});
 
-
-
+// useeffect to insert in the markdown
 useEffect( ()=>{
   const insert_in_mdx= async ()  => {
       
