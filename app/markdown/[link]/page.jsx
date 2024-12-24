@@ -1,15 +1,21 @@
 "use client";
+import EntryContext from '@/app/context';
 import MDEditor from '@uiw/react-md-editor';
-import { useParams } from 'next/navigation';
 
-import React, { useEffect, useState } from 'react'
 
+import React, { useContext, useEffect, useState } from 'react'
 const Markdown = () => {
-    const [value, setValue] = useState("");
+   
     const [mdx, setmdx] = useState("")
-    const params = useParams();
-    const link = decodeURIComponent(params.link)
+    
+    const link1 =useContext(EntryContext);
+    console.log(link1);
+    const link = link1 ;
     const modified_link = link.replace("g","u");
+
+
+
+
     const {
       GoogleGenerativeAI,
       HarmCategory,
