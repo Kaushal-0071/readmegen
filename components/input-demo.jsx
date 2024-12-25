@@ -8,7 +8,7 @@ export function Inputcard(props) {
   return (
     
 
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full  mx-auto border-none">
       <CardHeader>
         <CardTitle>Repo ReadmeGen</CardTitle>
         <CardDescription>Enter your GitHub repo link and Gemini API key </CardDescription>

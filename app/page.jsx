@@ -7,8 +7,10 @@ import { UseInputData } from "./store/inputdata";
 
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
-import { Github } from 'lucide-react'
-
+import { Github, Moon, Sun } from 'lucide-react'
+import { useTheme } from "next-themes";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 export default function Home() {
 
   const router = useRouter()
@@ -23,39 +25,102 @@ export default function Home() {
 
     router.push(`/markdown`);
   };
-
+  const { setTheme, theme } = useTheme();
   
   return (
     <>
-  
-<div className="min-h-screen bg-background flex flex-col">
+  <div className="min-h-screen bg-background">
       <header className="border-b">
-        <div className="container mx-auto py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <div className="bg-secondary w-8 h-8 flex items-center justify-center rounded-full">
-
-              <Github className="h-6 w-6" />
-              </div>
-              <h1 className="text-2xl font-bold">Github Readme Generator</h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <ThemeToggle />
-              <Button variant="outline" size="sm" asChild >
-                <a href="https://github.com/Kaushal-0071/readmegen" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4 " />
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <Github className="h-6 w-6" />
+            <span className="font-bold text-xl">README Generator</span>
+          </div>
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+            <Button variant="outline" asChild>
+              <a
+                href="https://github.com/Kaushal-0071/readmegen"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2"
+              >
+                <Github className="h-4 w-4" />
+                <span>View on GitHub</span>
               </a>
-              </Button>
-            </div>
+            </Button>
           </div>
         </div>
       </header>
-      <main className="flex-grow container mx-auto py-8 flex items-center">
-        <div className="max-w-md mx-auto">
-        <Inputcard setlink={updatalink} setkey={updatekey}  submit={submit} />
+
+      <main className="container mx-auto px-4 py-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
+            Create Beautiful GitHub READMEs
+          </h1>
+          <p className="text-xl text-muted-foreground mb-8">
+            Generate professional README files for your projects in minutes. No more starting from scratch.
+          </p>
+          
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="lg" className="font-semibold">
+                Get Started
+              </Button>
+            </DialogTrigger>
+            
+            <DialogContent>
+                
+              <DialogTitle>
+           
+              </DialogTitle>
+             
+            <Inputcard setlink={updatalink} setkey={updatekey}  submit={submit} />
+            </DialogContent>
+            
+
+            
+          </Dialog>
+
+          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-4">
+                📝
+              </div>
+              <h3 className="font-semibold mb-2">Easy to Use</h3>
+              <p className="text-muted-foreground">
+                Simple interface to generate professional READMEs in minutes
+              </p>
+            </div>
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-4">
+                🎨
+              </div>
+              <h3 className="font-semibold mb-2">Customizable</h3>
+              <p className="text-muted-foreground">
+                Choose from various templates and customize to your needs
+              </p>
+            </div>
+            <div className="rounded-lg border bg-card p-6">
+              <div className="mb-4">
+                🚀
+              </div>
+              <h3 className="font-semibold mb-2">Professional</h3>
+              <p className="text-muted-foreground">
+                Create READMEs that stand out and look professional
+              </p>
+            </div>
+          </div>
         </div>
       </main>
-     
     </div>
     </>
   

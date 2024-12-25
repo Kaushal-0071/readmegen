@@ -4,16 +4,16 @@ import MDEditor from '@uiw/react-md-editor';
 
 
 
-
 import React, {  useEffect, useState } from 'react'
 import { UseInputData } from '../store/inputdata';
 import { useTheme } from 'next-themes';
+import Header from '@/components/header';
 
 const Markdown = () => {
   const { theme } = useTheme()
    
     const [mdx, setmdx] = useState("")
-    
+  
 
     
     const key =UseInputData((state)=>state.key)
@@ -58,7 +58,9 @@ const Markdown = () => {
       return result;
     }
 
-
+useEffect( ()=>{
+  document.documentElement.setAttribute('data-color-mode', theme);
+},[theme])
 // useeffect to insert in the markdown
 useEffect( ()=>{
   document.documentElement.setAttribute('data-color-mode', theme);
@@ -92,20 +94,23 @@ useEffect( ()=>{
 
   
     return (
-        <div >
+      <>
+      <Header text={mdx}/>
+        <div>
           
       { 
        mdx && <MDEditor
           value={mdx}
           onChange={setmdx}
           height={1200}
-         
+        
           
         />
         
         }
         
       </div>
+      </>
     )
 }
 
