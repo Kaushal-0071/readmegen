@@ -27,7 +27,7 @@ const Markdown = () => {
       HarmBlockThreshold,
     } = require("@google/generative-ai");
     
-    const apiKey = key //"AIzaSyAhJuWKg-kznuLQv8xA3tYhaHHCwCmpoMA";
+    const apiKey = key 
     const genAI = new GoogleGenerativeAI(apiKey);
     
     const model = genAI.getGenerativeModel({
@@ -76,6 +76,7 @@ useEffect( ()=>{
      
     } catch (error) {
       console.error(error);
+      //TODO: handle error
     }
         }
         insert_in_mdx();

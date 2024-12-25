@@ -15,7 +15,7 @@ export default function Home() {
 
   const submit = () => {  
    
-
+//TODO:check if link and key is valid 
 
     router.push(`/markdown`);
   };
