@@ -4,18 +4,22 @@ import MDEditor from '@uiw/react-md-editor';
 
 
 
+
 import React, {  useEffect, useState } from 'react'
 import { UseInputData } from '../store/inputdata';
+import { useTheme } from 'next-themes';
+
 const Markdown = () => {
+  const { theme } = useTheme()
    
     const [mdx, setmdx] = useState("")
- 
+    
 
     
     const key =UseInputData((state)=>state.key)
     const link =UseInputData((state)=>state.link)
    console.log("in markdown data",key,link);
-    
+    console.log(theme)
     const modified_link = link.replace("g","u");
 
 
@@ -57,6 +61,7 @@ const Markdown = () => {
 
 // useeffect to insert in the markdown
 useEffect( ()=>{
+  document.documentElement.setAttribute('data-color-mode', theme);
   const insert_in_mdx= async ()  => {
       
     const options = {
