@@ -8,13 +8,18 @@ import React, {  useEffect, useState } from 'react'
 import { UseInputData } from '../store/inputdata';
 import { useTheme } from 'next-themes';
 import Header from '@/components/header';
+import Loading from '@/components/loading';
+import { useRouter } from 'next/navigation';
+import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
 
 const Markdown = () => {
-  const { theme } = useTheme()
+    const { theme } = useTheme()
    
     const [mdx, setmdx] = useState("")
   
-
+    const [error, seterror] = useState(false)
+    const router = useRouter()
     
     const key =UseInputData((state)=>state.key)
     const link =UseInputData((state)=>state.link)
@@ -35,7 +40,7 @@ const Markdown = () => {
     const genAI = new GoogleGenerativeAI(apiKey);
     
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-1.5-pro",
       systemInstruction: "Analyze the provided GitHub repository and generate a stylish and professional README in Markdown format. The README should include a project title and a concise description, an introduction to the main features of the project, and a clickable table of contents for navigation. Provide detailed instructions on how to install and set up the project, specifying where environment variables should be placed and their required formats if any environment variables are used. Include a clear explanation of how to run the project, along with examples of commands or configurations.\n\nList the major dependencies and tools required for the project . Add a section for contributing, explaining how developers can participate. Include a placeholder or inferred license information if applicable, and a contact section with placeholder details for reaching out to maintainers or contributors.\n\nEnsure the README is visually appealing and formatted in Markdown using headings, subheadings, bullet points, and code blocks as needed. It should be optimized for readability and provide accurate, non-fabricated information based solely on the project's structure and content. Provide the output strictly in Markdown format without any additional commentary or explanations.Add badges to the readme .Get badges from valid sources.Badges should be after the title. Give examples to run the code also if possible.If any previous readme or documentation is present enhance it and add the new information to it.The output should be a valid and well-formed markdown ",
     });
     
@@ -48,14 +53,21 @@ const Markdown = () => {
     };
     
     async function run(data) {
-      const chatSession = model.startChat({
-        generationConfig,
-        history: [
-        ],
-      });
-    
-      const result = await chatSession.sendMessage(data);
-      return result;
+      try{
+        const chatSession = model.startChat({
+          generationConfig,
+          history: [
+          ],
+        });
+      
+        const result = await chatSession.sendMessage(data);
+        return result;
+      }
+      catch(error){
+        seterror(true)
+        console.log("error in run")
+      }
+      
     }
 
 useEffect( ()=>{
@@ -82,7 +94,8 @@ useEffect( ()=>{
       
      
     } catch (error) {
-      console.error(error);
+      
+      seterror(true)
       //TODO: handle error
     }
         }
@@ -91,21 +104,43 @@ useEffect( ()=>{
 }, [])
 
     //use effect ends
-
+const handleClose = () => {
+  seterror(false);
+  router.back()
+}
   
     return (
       <>
-      <Header text={mdx}/>
+     
         <div>
+        <div>
+
+<AlertDialog open={error} onOpenChange={seterror}>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Error Occurred</AlertDialogTitle>
+      <AlertDialogDescription>
+       An error occurred while processing your request.Try changing the api key. 
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <Button onClick={handleClose}>Retry</Button>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+</div>
           
       { 
-       mdx && <MDEditor
+       mdx ?<>
+   
+   
+        <Header text={mdx}/>
+       <MDEditor
           value={mdx}
           onChange={setmdx}
           height={1200}
-        
-          
-        />
+         />
+       </> :<Loading/>
         
         }
         
