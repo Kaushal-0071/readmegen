@@ -87,8 +87,13 @@ useEffect( ()=>{
     };
     
     try {
+      
       const response = await fetch(modified_link, options);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
       const data = await response.text();
+      console.log(data)
       const repo= await run(data);
       setmdx(repo.response.text().replace("```markdown",""));
       
@@ -120,11 +125,11 @@ const handleClose = () => {
     <AlertDialogHeader>
       <AlertDialogTitle>Error Occurred</AlertDialogTitle>
       <AlertDialogDescription>
-       An error occurred while processing your request.Try changing the api key. 
+       An error occurred while processing your request.Try changing the api key or the repository link. 
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <Button onClick={handleClose}>Retry</Button>
+      <Button onClick={handleClose} variant="destructive">Retry</Button>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>
