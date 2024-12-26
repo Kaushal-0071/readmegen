@@ -1,25 +1,24 @@
 "use client"
-import { Button } from '@/components/ui/button'
 
-import { AlertDialogFooter, AlertDialogHeader } from '@/components/ui/alert-dialog'
-import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogTitle } from '@/components/ui/alert-dialog'
-import React, { useState } from 'react'
+import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast"
+import { useState } from "react"
 
-const Page = () => {
-    const [isOpen, setIsOpen] = useState(false);
 
-  const handleError = () => {
-    // Simulate an error occurring
-    setIsOpen(true);
-  };
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
+export default function ToastWithTitle() {
+  const { toast } = useToast()
+ const [effect, seteffect] = useState(false)
+ const run=()=>{
+ seteffect(true)
+ 
+ }
   return (
-     <div>test</div>
-    
+    <div className="bg-black w-50 h-100 font-bo">
+   <button className={`${
+            effect && "motion-preset-confetti "
+          } bg-blue-500 p-4 text-white w-1000 rounded hover:bg-blue-700 hover:shadow-xl`} onClick={run} onAnimationEnd={()=>seteffect(false)}>sdfsdfsdf</button>
+
+    </div>
   )
 }
-export default Page

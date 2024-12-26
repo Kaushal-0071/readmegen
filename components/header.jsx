@@ -5,18 +5,24 @@ import { Download, Copy, Github, Moon, Sun,Star } from 'lucide-react'
 import Link from "next/link"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
+import { useToast } from "@/hooks/use-toast"
+
+
 
 export default function Header(props) {
   const repoUrl = "https://github.com/Kaushal-0071/readmegen" 
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-
+  const { toast } = useToast()
   useEffect(() => setMounted(true), [])
 
   const handleCopy = () => {
     navigator.clipboard.writeText(props.text)
-      .then(() => alert("copied to clipboard"))
+      .then(() =>toast({
+        description: "Text has been copied to clipboard.",
+      }))
       .catch((err) => console.error("Failed to copy: ", err))
+      
   }
   const handleDownload = (e) => {
     e.preventDefault(); // Prevent default behavior, if needed
@@ -29,6 +35,7 @@ export default function Header(props) {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+    
   };
 
   const toggleTheme = () => {

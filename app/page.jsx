@@ -5,24 +5,36 @@ import { Inputcard } from "@/components/input-demo";
 import { useRouter } from "next/navigation";
 import { UseInputData } from "./store/inputdata";
 
-import { ThemeToggle } from "@/components/theme-toggle"
+
 import { Button } from "@/components/ui/button"
 import { Github, Moon, Sun } from 'lucide-react'
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
+import { useToast } from "@/hooks/use-toast";
 export default function Home() {
 
   const router = useRouter()
- 
+  const { toast } = useToast()
   const updatalink =UseInputData((state)=>state.updatelink)
  
   const updatekey =UseInputData((state)=>state.updatekey)
-
+  const link =UseInputData((state)=>state.link)
+  const regex = /^https:\/\/github\.com\/[^\/]+\/[^\/]+$/;
   const submit = () => {  
    
 //TODO:check if link and key is valid 
 
+if(!regex.test(link)){
+
+  toast({
+    variant: "destructive",
+    title: "Please enter the correct Repository link",
+    
+   
+  })
+return
+}
     router.push(`/markdown`);
   };
   const { setTheme, theme } = useTheme();
