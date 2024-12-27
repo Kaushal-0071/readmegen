@@ -30,7 +30,7 @@ export function Inputcard(props) {
             Gemini API Key
           </label>
           <Input id="api-key" type="password" placeholder="Enter your Gemini API key" onChange={(e) => {props.setkey(e.target.value)}} />
-        <a className="text-[12px]  hover:underline hover:text-blue-500 ml-1 cursor-pointer mt-2" href="https://aistudio.google.com/app/apikey" target="_blank">Get key</a> 
+        <a className="text-[12px]  underline hover:text-blue-500 ml-2 cursor-pointer " href="https://aistudio.google.com/app/apikey" target="_blank">Get key</a> 
         </div>
       </CardContent>
       <CardFooter>

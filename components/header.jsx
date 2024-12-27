@@ -46,7 +46,7 @@ export default function Header(props) {
 
   return (
     <header className="bg-background w-full  border-b dark:bg-[#0d1117] transition-colors  duration-200">
-      <div className=" w-screen   py-2 flex items-center justify-between px-4 ">
+      <div className=" w-screen py-2 flex items-center justify-between px-4 ">
       <div className="flex items-center space-x-3">
             <Github className="h-6 w-6" />
             <span className="font-bold text-xl">README Generator</span>

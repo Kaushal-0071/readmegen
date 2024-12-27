@@ -1,6 +1,6 @@
 "use client";
 
-import { Inputcard } from "@/components/input-demo";
+import { Inputcard } from "@/components/input-card";
 
 import { useRouter } from "next/navigation";
 import { UseInputData } from "./store/inputdata";
@@ -42,10 +42,10 @@ return
   
   return (
     <>
-    <div className=" overflow-y-scroll no-scrollbar">
-    <div className="absolute pointer-events-none h-[750px] inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] z-20"></div>
+    <div className=" overflow-y-scroll no-scrollbar h-full">
+    <div className="absolute pointer-events-none h-[790px] inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] z-20"></div>
 
-<HeroHighlight containerClassName={"h-full "} >
+<HeroHighlight containerClassName={"h-full"} >
 <div className="min-h-screen bg-none w-full">
   <header className="border-b w-screen backdrop-blur-[0.5px]">
     <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -55,12 +55,11 @@ return
       </div>
       <div className="flex items-center space-x-4">
         <Button
-          variant="ghost"
+          variant="outline"
           size="icon"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         >
-          <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
           <span className="sr-only">Toggle theme</span>
         </Button>
         <Button variant="outline" asChild>
@@ -78,7 +77,7 @@ return
     </div>
   </header>
 
-  <main className="container mx-auto px-4 py-16 ">
+  <main className="container mx-auto px-4 py-16 mb-16 ">
     <div className="max-w-3xl mx-auto text-center">
       <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
         Create Beautiful GitHub READMEs
@@ -123,7 +122,7 @@ return
           </div>
           <h3 className="font-semibold mb-2">Customizable</h3>
           <p className="text-muted-foreground">
-            Choose from various templates and customize to your needs
+            Modify and personalize to align with your requirements
           </p>
         </div>
         <div className="rounded-lg border bg-card p-6">
