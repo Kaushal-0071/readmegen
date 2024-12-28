@@ -13,8 +13,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 
 import { useToast } from "@/hooks/use-toast";
 import { HeroHighlight } from "@/components/ui/herohighlight";
+import { useEffect, useState } from "react";
 export default function Home() {
-
+  const { setTheme, theme } = useTheme();
+  
   const router = useRouter()
   const { toast } = useToast()
   const updatalink =UseInputData((state)=>state.updatelink)
@@ -22,6 +24,15 @@ export default function Home() {
   const updatekey =UseInputData((state)=>state.updatekey)
   const link =UseInputData((state)=>state.link)
   const regex = /^https:\/\/github\.com\/[^\/]+\/[^\/]+$/;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Avoid hydration mismatch by not rendering anything until fully mounted
+    return null;
+  }
   const submit = () => {  
    
 //TODO:check if link and key is valid 
@@ -38,8 +49,7 @@ return
 }
     router.push(`/markdown`);
   };
-  const { setTheme, theme } = useTheme();
-  
+
   return (
     <>
     <div className=" overflow-y-scroll no-scrollbar h-full">
