@@ -2,8 +2,8 @@ import { Inter } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from '@/components/ui/toaster'
-import { icons } from 'lucide-react'
 
+import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
@@ -38,7 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange={false}
           >
           {children}
-       
+       <Analytics/>
          <Toaster/>
         </ThemeProvider>
       </body>
