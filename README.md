@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+# Readme generator
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[![GitHub](https://img.shields.io/github/stars/Kaushal-0071/readmegen?style=social)](https://github.com/Kaushal-0071/readmegen)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+</div>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This repository provides a tool that helps developers generate professional and informative README files using LLMs. By analyzing a given GitHub repository, the tool creates a well-formatted README with relevant sections.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+*   **Automated README Generation:** Uses LLMs to generate README files from repository analysis.
+*   **Professional Formatting:** Outputs README files in a well-structured and readable Markdown format.
+*   **Table of Contents:** Automatically creates a clickable table of contents for easier navigation.
+*   **Installation and Setup Instructions:** Includes detailed instructions for setting up the project.
+*   **Dependency Listing:** Lists all major dependencies and tools required for the project.
+*   **Contribution Guide:** Provides a section explaining how developers can contribute.
+*   **Customization:** Badges are added to the README for enhanced professionalism.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Table of Contents
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  [Installation](#installation)
+2.  [Running the Project](#running-the-project)
+3.  [Dependencies](#dependencies)
+4.  [Contribution](#contribution)
+5.  [License](#license)
+6.  [Contact](#contact)
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To install and set up this project, follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/Kaushal-0071/readmegen.git
+    ```
+2.  Navigate to the project directory:
+    ```bash
+    cd readmegen
+    ```
+3.  Install the required dependencies:
+    ```bash
+    npm install
+    ```
+
+## Running the Project
+
+To run the project:
+
+1.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+2.  Open your browser and go to `http://localhost:3000`.
+
+To generate a README, input your GitHub repository link and Gemini API key into the provided input fields. The app will then analyze the repo and use LLM to generate a comprehensive README.
+
+## Dependencies
+
+*   **@google/generative-ai:** For using Google's generative AI models.
+*   **@radix-ui/react-alert-dialog, @radix-ui/react-dialog, @radix-ui/react-dropdown-menu, @radix-ui/react-slot, @radix-ui/react-toast, @radix-ui/react-visually-hidden:** For UI components.
+*   **@uiw/react-md-editor:** For the Markdown editor.
+*   **class-variance-authority:** For creating consistent component styles.
+*  **clsx:** For conditional class names.
+*   **framer-motion:** For animations.
+*   **lucide-react:** For icons.
+*   **mini-svg-data-uri:** For converting SVGs to data URIs.
+*   **next:** For building React applications.
+*   **next-themes:** For managing themes in Next.js.
+*   **react, react-dom:** For the React framework.
+*    **react-loading-indicators:** For loading indicators.
+*   **sonner:** For toast notifications.
+*   **tailwind-merge:** For merging Tailwind CSS classes.
+*   **tailwindcss-animate:** For Tailwind animations.
+*   **tailwindcss-motion:** For motion utilities in Tailwind CSS.
+*   **zustand:** For state management.
+
+Development Dependencies:
+*   **@eslint/eslintrc:** For ESLint configurations.
+*   **eslint, eslint-config-next:** For code linting.
+*   **postcss:** For CSS transformations.
+*   **tailwindcss:** For utility-first CSS framework.
+
+## Contribution
+
+Developers are welcome to contribute to this project. Here’s how to participate:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and commit them with descriptive messages.
+4.  Push your changes to your forked repository.
+5.  Submit a pull request to the main repository.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For any questions or to discuss the project, please contact:
+
+Kaushal-0071 - (kaushal.0071@gmail.com)
