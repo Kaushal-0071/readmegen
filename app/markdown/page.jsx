@@ -140,11 +140,15 @@ const handleClose = () => {
    
    
         <Header text={mdx}/>
-       <MDEditor
+
+      <div className="p-2  dark:bg-[#0e131a]">
+        <MDEditor
           value={mdx}
           onChange={setmdx}
           height={1200}
+          
          />
+        </div> 
        </> :<Loading/>
         
         }

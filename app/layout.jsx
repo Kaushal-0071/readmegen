@@ -2,12 +2,27 @@ import { Inter } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from '@/components/ui/toaster'
+import { icons } from 'lucide-react'
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "GitHub Repo Analyzer",
-  description: "Analyze GitHub repositories using Gemini API",
+  title: "README Generator",
+  description: "Generate readme for your github repository in seconds with AI",
+  icons:{
+    icon:[
+      {
+        media: "(prefers-color-scheme: dark)",
+        href: "/images/favicon-light.png" ,
+        url: "/images/favicon-light.png"
+      },
+      {
+        media: "(prefers-color-scheme: light)",
+        href: "/images/favicon-dark.png" ,
+        url: "/images/favicon-dark.png"
+      }
+    ]
+  }
 }
 
 export default function RootLayout({
