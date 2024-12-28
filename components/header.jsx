@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import { useToast } from "@/hooks/use-toast"
+import Image from "next/image"
 
 
 
@@ -48,7 +49,7 @@ export default function Header(props) {
     <header className="bg-background w-full  border-b dark:bg-[#0d1117] transition-colors  duration-200">
       <div className=" w-screen py-2 flex items-center justify-between px-4 ">
       <div className="flex items-center space-x-3">
-            <Github className="h-6 w-6" />
+      <Image src="./dark_logo.svg" width={24} height={24}  alt="Logo" className="dark:invert" />
             <span className="font-bold text-xl">README Generator</span>
           </div>
         <div className="flex items-center space-x-1 ">

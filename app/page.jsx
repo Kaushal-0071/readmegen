@@ -14,6 +14,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useToast } from "@/hooks/use-toast";
 import { HeroHighlight } from "@/components/ui/herohighlight";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 export default function Home() {
   const { setTheme, theme } = useTheme();
   
@@ -60,7 +61,7 @@ return
   <header className="border-b w-screen backdrop-blur-[0.5px]">
     <div className="container mx-auto px-4 h-16 flex items-center justify-between">
       <div className="flex items-center space-x-2">
-        <Github className="h-6 w-6" />
+      <Image src="./dark_logo.svg" width={24} height={24}  alt="Logo" className="dark:invert" />
         <span className="font-bold text-xl">README Generator</span>
       </div>
       <div className="flex items-center space-x-4">

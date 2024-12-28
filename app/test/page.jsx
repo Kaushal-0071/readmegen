@@ -1,14 +1,12 @@
 "use client"
 "use client";
-import Loading from "@/components/loading";
-import { HeroHighlight } from "@/components/ui/herohighlight";
-import { motion } from "framer-motion";
+
+import Image from "next/image";
 
 
 export default function ToastWithTitle() {
  
   return (
-   <Loading/>
-    
+    <Image src="./dark_logo.svg" width={40} height={40}  alt="Logo" className="dark:invert" />
   )
 }
